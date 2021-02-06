@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#Questo script serve ad avviare il wifi connettendosi all'ultima rete memorizzata
+#Nello specifico imposta anche sul resolv.conf il dns inserito dall'utente
+#Roberto 31/01/2021
+
+#spengo l'interfaccia
+ifdown wlan0
+
+echo "inserisci il dns"
+read DNS
+
+#aggiungo il dns
+echo "nameserver $DNS" >> /etc/resolv.conf 
+echo "inserito il DNS $DNS"
+
+#riavvio l'interfaccia
+ifup wlan0
+
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#Questo script serve ad avviare il wifi connettendosi all'ultima rete memorizzata
+#Nello specifico imposta anche sul resolv.conf il dns del router (192.168.1.1)
+#Roberto 31/01/2021
+
+#spengo l'interfaccia
+ifdown wlan0
+
+#aggiungo il dns
+echo "nameserver 192.168.1.1" >> /etc/resolv.conf 
+
+#riavvio l'interfaccia
+ifup wlan0
+
+
